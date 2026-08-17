@@ -1,0 +1,96 @@
+{
+  "users": {
+    "user1": {
+      "id": "user1",
+      "name": "Yavuz",
+      "avatar": "🐺",
+      "customAvatarUrl": null,
+      "status": "offline",
+      "lastSeen": 1786980022516,
+      "color": "#ff5722"
+    },
+    "user2": {
+      "id": "user2",
+      "name": "Nisa",
+      "avatar": "🌸",
+      "customAvatarUrl": null,
+      "status": "offline",
+      "lastSeen": 1786979659848,
+      "color": "#ff66aa"
+    }
+  },
+  "streak": {
+    "currentStreak": 285,
+    "bestStreak": 285,
+    "startDate": "2025-12-10",
+    "currentCycleDate": "2026-08-17",
+    "user1MessagedToday": true,
+    "user2MessagedToday": true,
+    "streakCompletedToday": true,
+    "isGreyedOut": false,
+    "isExtinguished": false,
+    "freezesRemaining": 19,
+    "maxFreezesPerMonth": 20,
+    "streakHistory": [],
+    "cycleStartTime": 1786914000000
+  },
+  "wallpapers": {
+    "current": {
+      "type": "oled",
+      "url": "",
+      "blur": 0,
+      "opacity": 100,
+      "brightness": 100
+    },
+    "user1": {
+      "type": "oled",
+      "url": "",
+      "blur": 0,
+      "opacity": 100,
+      "brightness": 100
+    },
+    "user2": {
+      "type": "oled",
+      "url": "",
+      "blur": 0,
+      "opacity": 100,
+      "brightness": 100
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_1786979659823_die68o",
+      "senderId": "user1",
+      "text": "Seni çok seviyorum birtanem ❤️",
+      "type": "text",
+      "mediaUrl": null,
+      "isSnap": false,
+      "snapViewedBy": [],
+      "replyTo": null,
+      "reactions": {
+        "❤️": [
+          "user2"
+        ]
+      },
+      "isSaved": false,
+      "timestamp": 1786979659823,
+      "readBy": [
+        "user1"
+      ]
+    }
+  ],
+  "memories": [],
+  "dailyPrompts": [
+    "Bugün benimle ilgili aklına gelen ilk güzel an neydi?",
+    "Birlikte gitmeyi en çok hayal ettiğin yer neresi sevgilim?",
+    "İlk tanıştığımız gün hakkında hiç unutamadığın bir detay?",
+    "Şu an yanımda olsaydın ilk ne yapmak isterdin?",
+    "Bugün seni en çok ne mutlu etti birtanem?",
+    "Birlikte yapacağımız bir sonraki en özel plan ne olsun?",
+    "Benim en sevdiğin huyum veya hareketim ne?",
+    "Bizi anlatan en güzel aşk şarkısı sence hangisi?",
+    "Gelecekteki yuvamızda kesinlikle olmasını istediğin tek şey?",
+    "Bugünü 10 üzerinden puanlasaydın kaç verirdin ve neden?"
+  ],
+  "activePromptIndex": 0
+}

@@ -1,0 +1,28 @@
+{
+  "name": "streak-duo",
+  "version": "1.0.0",
+  "description": "İki kişiye özel OLED siyah ve sohbet serisi (streak) tabanlı modern mesajlaşma platformu",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "chat",
+    "streak",
+    "snapchat",
+    "oled-black",
+    "messaging",
+    "socketio"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.8.3"
+  }
+}

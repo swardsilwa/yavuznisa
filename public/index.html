@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Yavuz & Nisa • Özel Sohbet & Seri</title>
+  <meta name="description" content="Yavuz ve Nisa'ya özel, saf siyah OLED temalı ve 285+ günlük sohbet serisi platformu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="pitch-black">
+  <!-- Dynamic Background Layer -->
+  <div id="wallpaper-layer" class="wallpaper-layer"></div>
+  <div id="wallpaper-overlay" class="wallpaper-overlay"></div>
+
+  <!-- App Wrapper -->
+  <div id="app" class="app-container">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <!-- Partner Card -->
+        <div class="partner-card" id="partner-header-card">
+          <div class="avatar-wrap">
+            <div class="avatar" id="partner-avatar">🌸</div>
+            <span class="status-indicator" id="partner-status-dot"></span>
+          </div>
+          <div class="partner-meta">
+            <div class="partner-name-row">
+              <span class="partner-name" id="partner-name">Nisa</span>
+              <span class="typing-badge" id="partner-typing-badge" style="display: none;">
+                <span></span><span></span><span></span>
+              </span>
+            </div>
+            <span class="partner-sub" id="partner-status-text">Çevrimdışı</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Streak Hub -->
+      <div class="header-center">
+        <button class="streak-pill streak-greyed" id="streak-pill-btn" title="Sohbet Serisi Detayları">
+          <div class="flame-icon-wrap" id="flame-icon-wrap">
+            <span class="flame-emoji" id="header-flame-emoji">🩶</span>
+            <span class="flame-glow" id="header-flame-glow"></span>
+          </div>
+          <div class="streak-text-wrap">
+            <div class="streak-count-row">
+              <span class="streak-count" id="header-streak-count">285</span>
+              <span class="streak-unit">GÜN</span>
+            </div>
+            <div class="streak-timer-row" id="streak-timer-row">
+              <span class="timer-icon">⏳</span>
+              <span class="timer-text" id="header-streak-timer">24:00:00</span>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Right: Action Icons -->
+      <div class="header-right">
+        <button class="icon-btn" id="btn-memory-vault" title="Özel Anı Kasası">
+          <span>⭐</span>
+        </button>
+        <button class="icon-btn" id="btn-wallpaper-modal" title="Sohbet Duvar Kağıdı (Galeriden Ekle)">
+          <span>🖼️</span>
+        </button>
+        <button class="icon-btn" id="btn-privacy-lock" title="Gizlilik Kilidi (Bulanıklaştır)">
+          <span>👁️</span>
+        </button>
+        <button class="icon-btn" id="btn-settings" title="Ayarlar">
+          <span>⚙️</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Daily Streak Banner -->
+    <section class="streak-banner" id="streak-banner">
+      <div class="banner-content">
+        <div class="banner-status-item" id="banner-user1-status">
+          <span class="banner-avatar" id="banner-user1-avatar">🐺</span>
+          <span class="banner-uname" id="banner-user1-name">Yavuz</span>
+          <span class="banner-check" id="banner-user1-check">⏳</span>
+        </div>
+        <div class="banner-middle-connector">
+          <div class="connector-line"></div>
+          <span class="connector-flame" id="connector-flame">❤️‍🔥</span>
+          <div class="connector-line"></div>
+        </div>
+        <div class="banner-status-item" id="banner-user2-status">
+          <span class="banner-avatar" id="banner-user2-avatar">🌸</span>
+          <span class="banner-uname" id="banner-user2-name">Nisa</span>
+          <span class="banner-check" id="banner-user2-check">⏳</span>
+        </div>
+      </div>
+      <div class="banner-sub-info" id="banner-sub-info">
+        Seri her gece 00:00'da griye döner; ikiniz de yazdığınızda canlanıp artar!
+      </div>
+    </section>
+
+    <!-- Messages Chat Container -->
+    <main class="chat-container" id="chat-container">
+      <div class="messages-list" id="messages-list">
+        <!-- Messages rendered dynamically -->
+      </div>
+      <div class="scroll-bottom-btn" id="scroll-bottom-btn" style="display: none;">
+        <span>↓</span>
+      </div>
+    </main>
+
+    <!-- Reply Preview Bar -->
+    <div class="reply-preview-bar" id="reply-preview-bar" style="display: none;">
+      <div class="reply-preview-border"></div>
+      <div class="reply-preview-content">
+        <span class="reply-to-user" id="reply-to-user">Nisa</span>
+        <p class="reply-to-text" id="reply-to-text">Mesaj içeriği...</p>
+      </div>
+      <button class="reply-cancel-btn" id="reply-cancel-btn">✕</button>
+    </div>
+
+    <!-- Live Voice Recorder Bar -->
+    <div class="voice-recording-bar" id="voice-recording-bar" style="display: none;">
+      <div class="voice-recording-pulse"></div>
+      <div class="voice-recording-time" id="voice-recording-time">00:00</div>
+      <div class="voice-visualizer">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <button class="voice-cancel-btn" id="btn-voice-cancel">Vazgeç</button>
+      <button class="voice-send-btn" id="btn-voice-send">Gönder ❤️</button>
+    </div>
+
+    <!-- Bottom Input Area -->
+    <footer class="chat-footer" id="chat-footer">
+      <div class="input-actions-left">
+        <button class="footer-btn" id="btn-attach" title="Medya Ekle">
+          <span>📎</span>
+        </button>
+        <div class="attach-popover" id="attach-popover" style="display: none;">
+          <button class="attach-option" id="btn-attach-normal-photo">
+            <span class="attach-icon">📸</span>
+            <div class="attach-text">
+              <strong>Fotoğraf Paylaş</strong>
+              <small>Sohbette kalıcı görünür</small>
+            </div>
+          </button>
+          <button class="attach-option highlight-snap" id="btn-attach-snap-photo">
+            <span class="attach-icon">🔥</span>
+            <div class="attach-text">
+              <strong>Tek Seferlik Snap</strong>
+              <small>Basılı tutup 5 saniye izle</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hidden file inputs -->
+      <input type="file" id="file-input-image" accept="image/*" style="display: none;">
+      <input type="file" id="file-input-snap" accept="image/*" style="display: none;">
+      <input type="file" id="file-input-wallpaper" accept="image/*" style="display: none;">
+      <input type="file" id="file-input-avatar" accept="image/*" style="display: none;">
+
+      <!-- Text Input -->
+      <div class="input-box-wrapper">
+        <textarea 
+          id="message-input" 
+          class="message-textarea" 
+          placeholder="Sevgiline bir mesaj yaz..." 
+          rows="1"
+          maxlength="2000"
+        ></textarea>
+      </div>
+
+      <div class="input-actions-right">
+        <button class="footer-btn" id="btn-emoji-toggle" title="Emoji Ekle">
+          <span>😊</span>
+        </button>
+        <button class="footer-btn" id="btn-voice-record" title="Sesli Mesaj">
+          <span>🎙️</span>
+        </button>
+        <button class="send-btn" id="btn-send" title="Gönder">
+          <span>➤</span>
+        </button>
+      </div>
+
+      <!-- Emoji Picker Panel -->
+      <div class="emoji-picker-panel" id="emoji-picker-panel" style="display: none;">
+        <div class="emoji-grid">
+          <span>❤️</span><span>🔥</span><span>🥰</span><span>✨</span><span>🌸</span>
+          <span>💖</span><span>😍</span><span>💍</span><span>🐺</span><span>🌙</span>
+          <span>🥺</span><span>🕊️</span><span>🌹</span><span>💌</span><span>💎</span>
+          <span>🎉</span><span>👑</span><span>😂</span><span>💯</span><span>🍫</span>
+          <span>🫂</span><span>💋</span><span>🧸</span><span>💫</span><span>🌌</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. Password Lock Screen Modal -->
+  <div class="modal-backdrop" id="modal-password-auth" style="display: flex;">
+    <div class="modal-card oled-card login-card">
+      <div class="login-header">
+        <div class="brand-logo">
+          <span class="flame-big">❤️‍🔥</span>
+        </div>
+        <h2>Yavuz & Nisa</h2>
+      </div>
+
+      <div class="password-form-box">
+        <label class="password-label">Sohbet Şifresini Girin:</label>
+        <div class="password-input-wrap">
+          <input 
+            type="password" 
+            id="site-password-input" 
+            class="oled-input password-field" 
+            placeholder="Şifre"
+            autocomplete="current-password"
+          >
+        </div>
+        <button class="primary-btn login-btn" id="btn-submit-password">
+          Sohbete Giriş Yap ❤️
+        </button>
+        <p class="password-error" id="password-error-text" style="display: none;">Hatalı şifre girdiniz!</p>
+      </div>
+
+      <!-- Device Identity Selection (Single one-time setup on first unlock) -->
+      <div class="device-identity-setup" id="device-identity-setup" style="display: none;">
+        <p class="device-title">Bu cihazı kim kullanıyor?</p>
+        <div class="identity-cards-row">
+          <button class="identity-btn" id="btn-pick-yavuz" data-user="user1">
+            <div class="id-avatar">🐺</div>
+            <strong>Yavuz</strong>
+          </button>
+          <button class="identity-btn" id="btn-pick-nisa" data-user="user2">
+            <div class="id-avatar">🌸</div>
+            <strong>Nisa</strong>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Streak & Badges Hub Modal -->
+  <div class="modal-backdrop" id="modal-streak" style="display: none;">
+    <div class="modal-card oled-card streak-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">🔥</span>
+          <h3>Aşk ve Sohbet Serisi</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-streak-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Big Streak Hero -->
+        <div class="big-streak-hero" id="modal-streak-hero">
+          <div class="hero-flame-wrapper">
+            <span class="hero-flame" id="modal-hero-flame">🔥</span>
+            <div class="hero-pulse"></div>
+          </div>
+          <div class="hero-streak-val" id="modal-streak-val">285</div>
+          <div class="hero-streak-label" id="modal-streak-status-lbl">GÜNLÜK KESİNTİSİZ SERİ</div>
+          <div class="hero-streak-timer-tag" id="modal-streak-timer-tag">
+            ⏳ Gece 00:00'a Kalan: 23:59:00
+          </div>
+        </div>
+
+        <!-- Streak Stats Grid -->
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-icon">🏆</span>
+            <span class="stat-val" id="stat-best-streak">285</span>
+            <span class="stat-lbl">En Yüksek Seri</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">❤️‍🩹</span>
+            <span class="stat-val" id="stat-freezes">20</span>
+            <span class="stat-lbl">Canlandırma Hakkı</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">💌</span>
+            <span class="stat-val" id="stat-total-messages">0</span>
+            <span class="stat-lbl">Toplam Mesaj</span>
+          </div>
+        </div>
+
+        <!-- Revive Action Box (20 hak) -->
+        <div class="freeze-action-box" id="revive-action-box">
+          <div class="freeze-info">
+            <strong>❤️‍🩹 Seriyi Yeniden Canlandır (20 Hak)</strong>
+            <small>Mesaj atılamayan günlerde seriyi söndürmeden kurtarın.</small>
+          </div>
+          <button class="freeze-btn revive-btn" id="btn-activate-revive">Canlandır ❤️</button>
+        </div>
+
+        <!-- Milestones & Badges List -->
+        <div class="milestones-section">
+          <h4>🏆 Özel Seri Rozetleri</h4>
+          <div class="badges-grid" id="badges-grid">
+            <!-- Badges rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Custom Wallpaper Manager Modal (Galeriden Fotoğraf Ekleme) -->
+  <div class="modal-backdrop" id="modal-wallpaper" style="display: none;">
+    <div class="modal-card oled-card wallpaper-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">🖼️</span>
+          <h3>Sohbet Duvar Kağıdı</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-wallpaper-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Gallery Custom Upload Button -->
+        <div class="upload-gallery-box">
+          <button class="gallery-upload-btn" id="btn-trigger-wallpaper-upload">
+            <span class="upload-icon">📷</span>
+            <div class="upload-texts">
+              <strong>Galerimden Fotoğraf Seç ve Yükle</strong>
+              <small>Cihazınızdan istediğiniz ortak bir fotoğrafı arka plan yapın</small>
+            </div>
+          </button>
+        </div>
+
+        <!-- OLED & Preset Wallpapers -->
+        <div class="preset-wallpapers-section">
+          <h4>Hazır OLED & Karanlık Temalar</h4>
+          <div class="presets-grid">
+            <button class="preset-item active" data-preset="oled">
+              <div class="preset-preview bg-oled"></div>
+              <span>Düz OLED Siyah</span>
+            </button>
+            <button class="preset-item" data-preset="starfield">
+              <div class="preset-preview bg-starfield"></div>
+              <span>Yıldız Kümesi</span>
+            </button>
+            <button class="preset-item" data-preset="nebula">
+              <div class="preset-preview bg-nebula"></div>
+              <span>Karanlık Nebula</span>
+            </button>
+            <button class="preset-item" data-preset="cybergrid">
+              <div class="preset-preview bg-cybergrid"></div>
+              <span>Siber Izgara</span>
+            </button>
+            <button class="preset-item" data-preset="midnightflame">
+              <div class="preset-preview bg-flame"></div>
+              <span>Gece Alevi</span>
+            </button>
+            <button class="preset-item" data-preset="minimaldots">
+              <div class="preset-preview bg-dots"></div>
+              <span>Minimal Noktalar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Controls: Blur & Dimming Sliders -->
+        <div class="wallpaper-controls-section">
+          <h4>Görünüm ve Okunabilirlik Ayarları</h4>
+          
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Arka Plan Bulanıklığı (Blur)</span>
+              <span id="blur-val-label">0px</span>
+            </div>
+            <input type="range" id="wallpaper-blur-slider" min="0" max="25" value="0" class="oled-slider">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Karartma & Opaklık (Dimming)</span>
+              <span id="opacity-val-label">100%</span>
+            </div>
+            <input type="range" id="wallpaper-opacity-slider" min="15" max="100" value="100" class="oled-slider">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Parlaklık (Brightness)</span>
+              <span id="brightness-val-label">100%</span>
+            </div>
+            <input type="range" id="wallpaper-brightness-slider" min="20" max="150" value="100" class="oled-slider">
+          </div>
+        </div>
+
+        <div class="wallpaper-actions">
+          <button class="secondary-btn" id="btn-reset-wallpaper">Düz Siyaha Dön</button>
+          <button class="primary-btn" id="btn-save-wallpaper">Kaydet & Uygula</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Memory Vault (Özel Anı Kasası) Modal -->
+  <div class="modal-backdrop" id="modal-memory" style="display: none;">
+    <div class="modal-card oled-card memory-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">⭐</span>
+          <h3>Özel Anı Kasamız</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-memory-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="memory-subtitle">Yıldızladığınız tüm özel mesajlar, aşk notları ve fotoğraflar burada saklanır.</p>
+        <div class="memories-list" id="memories-list">
+          <!-- Memories rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Settings & Profile Modal -->
+  <div class="modal-backdrop" id="modal-settings" style="display: none;">
+    <div class="modal-card oled-card settings-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">⚙️</span>
+          <h3>Sohbet & Cihaz Ayarları</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-settings-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="settings-profile-section">
+          <div class="form-group">
+            <label>Bu Cihaz Kimin?</label>
+            <div class="identity-cards-row">
+              <button class="identity-btn" id="settings-pick-yavuz">
+                <div class="id-avatar">🐺</div>
+                <strong>Yavuz</strong>
+              </button>
+              <button class="identity-btn" id="settings-pick-nisa">
+                <div class="id-avatar">🌸</div>
+                <strong>Nisa</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="avatar-edit-wrapper">
+            <div class="avatar-large" id="settings-avatar-preview">🐺</div>
+            <button class="avatar-change-btn" id="btn-change-avatar-photo">Fotoğraf Yükle 📷</button>
+          </div>
+
+          <div class="form-group">
+            <label>Görünen Ad</label>
+            <input type="text" id="settings-input-name" class="oled-input" maxlength="20" placeholder="Adınız...">
+          </div>
+        </div>
+
+        <div class="settings-switch-user-box">
+          <button class="switch-user-btn" id="btn-lock-site">
+            🔒 Sohbeti Kilitle & Çıkış Yap
+          </button>
+        </div>
+
+        <div class="settings-actions">
+          <button class="primary-btn" id="btn-save-settings">Ayarları Kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Snapchat-Style Snap Viewer Modal (Hold to View) -->
+  <div class="snap-viewer-overlay" id="snap-viewer-overlay" style="display: none;">
+    <div class="snap-top-progress-bar">
+      <div class="snap-progress-fill" id="snap-progress-fill"></div>
+    </div>
+    <div class="snap-header-info">
+      <span class="snap-sender-name" id="snap-sender-name">Nisa</span>
+      <span class="snap-timer-count" id="snap-timer-count">5s</span>
+    </div>
+    <div class="snap-image-container">
+      <img id="snap-image-display" src="" alt="Gizli Snap">
+    </div>
+    <div class="snap-instruction-hint" id="snap-instruction-hint">
+      👁️ Görüntülemek için basılı tutun
+    </div>
+  </div>
+
+  <!-- 7. Image Lightbox -->
+  <div class="lightbox-overlay" id="lightbox-overlay" style="display: none;">
+    <button class="lightbox-close-btn" id="btn-close-lightbox">✕</button>
+    <img id="lightbox-image" src="" alt="Büyütülmüş Görsel">
+  </div>
+
+  <!-- 8. Streak Level Up Celebration Fireworks Overlay -->
+  <div class="streak-celebration-overlay" id="streak-celebration-overlay" style="display: none;">
+    <div class="celebration-box">
+      <div class="flame-burst-animation">❤️‍🔥</div>
+      <h2 id="celebration-title">SERİ ARTTI! 🔥</h2>
+      <div class="celebration-streak-number" id="celebration-streak-number">286</div>
+      <p id="celebration-desc">Harikasınız! Kesintisiz aşk ve sohbet seriniz 1 gün daha uzadı.</p>
+      <button class="celebration-close-btn" id="btn-close-celebration">Devam Et ❤️</button>
+    </div>
+    <canvas id="celebration-canvas"></canvas>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/audioEffects.js"></script>
+  <script src="/js/streakEngine.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
