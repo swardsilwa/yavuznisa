@@ -18,7 +18,7 @@ const io = new Server(server, {
 });
 
 const PORT = process.env.PORT || 3000;
-const SITE_PASSWORD = "10.12.2025";
+const SITE_PASSWORD = "05.12.2025";
 
 // Ensure directories exist
 const dataDir = path.join(__dirname, 'data');
